@@ -1,3 +1,4 @@
+import static org.junit.Assert.assertThrows;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import org.junit.jupiter.api.Test;
@@ -22,4 +23,28 @@ public class FireTest {
     }
 
     // Add more tests!
+
+    @Test 
+    public void testValidStartNoTree(){
+        //act
+                char[][] forest = {
+            {'t','.','.','t','t','t','t','.','t'},
+            {'.','.','t','t','.','.','.','.','t'},
+            {'.','.','t','t','t','t','t','t','t'},
+            {'t','t','t','t','.','.','.','.','.'}
+        };
+
+        //arrange
+
+        int matchR = 1;
+        int matchC = 1;
+        //assert
+
+               assertThrows(IllegalArgumentException.class, () -> {
+            Fire.timeToBurn(forest, matchR, matchC);
+        });
+
+
+
+    }
 }
