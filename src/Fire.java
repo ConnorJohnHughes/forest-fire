@@ -1,3 +1,6 @@
+import java.util.LinkedList;
+import java.util.Queue;
+
 public class Fire {
     /**
      * Returns how long it takes for all vulnerable trees to be set on fire if a
@@ -42,8 +45,8 @@ public class Fire {
         if(forest[matchR][matchC] != 't') throw new IllegalArgumentException();
 
         // Implement this AND add more tests!!!
-
-
+        Queue<char[]> queue = new LinkedList<>();
+        StartLocation start = new StartLocation(matchR, matchC);
 
         return -1;
     }
