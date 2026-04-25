@@ -51,5 +51,17 @@ public class Fire {
         return -1;
     }
 
+    public static boolean isValid(int r, int c, char[][] forest, boolean[][] visited) {
+        // base case: check bounds
+        if (r < 0 || r >= forest.length || c < 0 || c > forest[0].length) return false;
+
+        // tree check
+        if (forest[r][c] != 't') return false;
+
+        // visited check
+        if (visited[r][c]) return false;
+        
+        return true;
+    }
 
 }
