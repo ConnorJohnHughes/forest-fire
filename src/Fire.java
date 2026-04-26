@@ -1,5 +1,7 @@
+import java.util.HashSet;
 import java.util.LinkedList;
 import java.util.Queue;
+import java.util.Set;
 
 public class Fire {
     /**
@@ -43,10 +45,24 @@ public class Fire {
         // just a location. What other information might be useful?
 
         if(forest[matchR][matchC] != 't') throw new IllegalArgumentException();
+        boolean[][] validVisited =  new boolean[forest.length][forest[0].length];
+        isValid(matchR, matchC, forest, validVisited);
 
         // Implement this AND add more tests!!!
         Queue<char[]> queue = new LinkedList<>();
-        StartLocation start = new StartLocation(matchR, matchC);
+        Set<int[]> visited = new HashSet<>();
+
+        int[][] directions = {
+            {1,0}, //down
+            {-1,0},// up
+            {0,1},//right
+            {0,-1}// left
+        };
+
+        // StartLocation start = new StartLocation(matchR, matchC);
+        int[] start = new int[]{matchR, matchC};
+
+        
 
         return -1;
     }
@@ -62,6 +78,31 @@ public class Fire {
         if (visited[r][c]) return false;
         
         return true;
+    }
+
+    public static int bfs(char[][] forest, int[] start, Queue<int[]> queue, Set<int[]> visited , int[][] directions){
+        if(start == null) return 0;
+        int time = 0;
+        boolean[][] validVisited =  new boolean[forest.length][forest[0].length];
+        queue.add(start);
+        visited.add(start);
+
+        while(!queue.isEmpty()){
+            int[] current = queue.poll();
+            int currentRow = current[0];
+            int currentCol = current[1];
+
+            for(int[] direction : directions){
+                int newRow = currentRow + direction[0];
+                int newCol = currentCol + direction[1];
+                if(isValid(newRow, newCol, forest, validVisited));
+
+
+            }
+        }
+
+
+        return -1;
     }
 
 }
