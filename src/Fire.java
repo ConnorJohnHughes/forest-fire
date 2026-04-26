@@ -57,18 +57,19 @@ public class Fire {
             {0,1},//right
             {0,-1}// left
         };
+        int time = 0;
 
         // StartLocation start = new StartLocation(matchR, matchC);
-        int[] start = new int[]{matchR, matchC};
+        int[] start = new int[]{matchR, matchC, time};
 
         
 
-        return -1;
+        return bfs(forest, start, directions, visited);
     }
 
     public static boolean isValid(int r, int c, char[][] forest, boolean[][] visited) {
         // base case: check bounds
-        if (r < 0 || r >= forest.length || c < 0 || c > forest[0].length) return false;
+        if (r < 0 || r >= forest.length || c < 0 || c >= forest[0].length) return false;
 
         // tree check
         if (forest[r][c] != 't') return false;
